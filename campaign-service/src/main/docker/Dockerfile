@@ -4,8 +4,8 @@ EXPOSE 8080
 RUN apt-get update
 RUN apt-get install -y maven
 WORKDIR /code
-ADD campaign-service/pom.xml /code/pom.xml
-ADD campaign-service/src /code/src
+ADD /campaign-service/pom.xml /code/pom.xml
+ADD /campaign-service/src /code/src
 RUN [ "mvn", "install" ]
 ADD target/campaign-service-1.0-SNAPSHOT.jar /data/campaign-service.jar
 
