@@ -3,6 +3,8 @@ MAINTAINER shohinee585@gmail.com
 EXPOSE 8080
 RUN apt-get update
 RUN apt-get install -y maven
+RUN pwd
+RUN ls
 WORKDIR /code
 ADD /campaign-service/pom.xml /code/pom.xml
 ADD /campaign-service/src /code/src
