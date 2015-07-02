@@ -1,0 +1,172 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-parent</artifactId>
+      <version>1.2.1.RELEASE</version>
+  </parent>
+  <groupId>org.akm</groupId>
+  <artifactId>campaign-service</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>campaign-service</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+      <docker.image.prefix>smartcampaign</docker.image.prefix>
+      <mongo-version>1.6.1.RELEASE</mongo-version>
+      <spring.boot-version>1.2.3.RELEASE</spring.boot-version>
+      <spring.boot.jetty-version>1.2.3.RELEASE</spring.boot.jetty-version>
+      <spring.web.mvc-version>4.1.5.RELEASE</spring.web.mvc-version>
+      <spring.boot.test-version>1.2.3.RELEASE</spring.boot.test-version>
+      <jackson-version>2.5.0</jackson-version>
+      <spring.hateoas-version>0.3.0.RELEASE</spring.hateoas-version>
+      <apache.kafka-version>0.8.1.1</apache.kafka-version>
+      <starter.integration-version>1.2.3.RELEASE</starter.integration-version>
+      <kafka.integration-version>1.1.1.RELEASE</kafka.integration-version>
+      <integration.dsl-version>1.1.0.M1</integration.dsl-version>
+      <docker.maven-plugin>0.2.3</docker.maven-plugin>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!--  dependency>
+        <groupId>org.springframework.hateoas</groupId>
+        <artifactId>spring-hateoas</artifactId>
+        <version>${spring.hateoas-version}</version>
+    </dependency-->
+
+
+    <dependency> 
+        <groupId>org.springframework</groupId> 
+        <artifactId>spring-webmvc</artifactId> 
+        <version>${spring.web.mvc-version}</version> 
+    </dependency> 
+
+    <dependency>
+        <groupId>org.springframework.integration</groupId>
+        <artifactId>spring-integration-kafka</artifactId>
+        <version>${kafka.integration-version}</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.apache.kafka</groupId>
+        <artifactId>kafka_2.10</artifactId>
+        <version>${apache.kafka-version}</version>
+    </dependency>
+    
+
+    <dependency>
+        <groupId>org.springframework.integration</groupId>
+        <artifactId>spring-integration-java-dsl</artifactId>
+        <version>${integration.dsl-version}</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.springframework.data</groupId>
+        <artifactId>spring-data-mongodb</artifactId>
+        <version>${mongo-version}</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter</artifactId>
+        <version>${spring.boot-version}</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-jetty</artifactId>
+        <version>${spring.boot.jetty-version}</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <version>${spring.boot.test-version}</version>
+    </dependency>
+
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>${jackson-version}</version>
+    </dependency>
+
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-core</artifactId>
+        <version>${jackson-version}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+      <plugins>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <version>3.3</version>
+          <configuration>
+              <source>8</source>
+              <target>8</target>
+          </configuration>
+          </plugin>
+
+          <plugin>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-maven-plugin</artifactId>
+              <version>1.2.1.RELEASE</version>
+              <executions>
+                  <execution>
+                  <goals>
+                      <goal>repackage</goal>
+                  </goals>
+                  </execution>
+              </executions>
+          </plugin>
+
+          <plugin>
+              <groupId>com.spotify</groupId>
+              <artifactId>docker-maven-plugin</artifactId>
+	      <version>${docker.maven-plugin}</version>
+              <configuration>
+                  <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+                  <dockerDirectory>src/main/docker</dockerDirectory>
+                  <resources>
+                      <resource>
+                          <targetPath>/</targetPath>
+                          <directory>${project.build.directory}</directory>
+                          <include>${project.build.finalName}.jar</include>
+                      </resource>
+                  </resources>
+		  <serverId>docker-hub</serverId>
+		  <registryUrl>https://index.docker.io/v1/</registryUrl>
+              </configuration>
+              <executions>
+                  <execution>
+                     <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                  </execution>
+              </executions>
+          </plugin>
+      </plugins>
+
+  </build>
+
+  <repositories>
+      <repository>
+          <id>kafka-dsl-repo</id>
+          <name>repo to be taken out later</name>
+          <url>http://repo.spring.io/simple/libs-milestone-local/</url>
+      </repository>
+  </repositories>
+</project>
