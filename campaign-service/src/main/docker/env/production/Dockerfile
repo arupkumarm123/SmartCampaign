@@ -6,7 +6,7 @@ RUN apt-get update
 RUN apt-get install -y maven git python-virtualenv
 RUN mkdir /root/.ssh
 # Copy over private key, and set permissions
-ADD id_rsa /root/.ssh/id_rsa
+#ADD id_rsa /root/.ssh/id_rsa
 
 # Create known_hosts
 RUN touch /root/.ssh/known_hosts
