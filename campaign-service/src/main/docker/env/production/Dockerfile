@@ -16,7 +16,8 @@ RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
 RUN pwd
 RUN ls
 WORKDIR /code
-RUN git clone git@github.com:arupkumarm123/SmartCampaign.git
+#RUN git clone git@github.com:arupkumarm123/SmartCampaign.git
+RUN git clone https://arupkumarm123:Shohini010@github.com/arupkumarm123/SmartCampaign.git
 #ADD campaign-service/pom.xml /code/pom.xml
 #ADD campaign-service/src /code/src
 RUN cd campaign-service
