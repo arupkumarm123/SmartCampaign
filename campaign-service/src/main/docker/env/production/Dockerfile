@@ -19,6 +19,7 @@ RUN cd SmartCampaign/campaign-service
 WORKDIR /code/SmartCampaign/campaign-service
 RUN [ "mvn", "install" ]
 WORKDIR /code/SmartCampaign/campaign-service
+RUN ls
 ADD target/campaign-service-1.0-SNAPSHOT.jar /data/campaign-service.jar
 
 CMD java -jar campaign-service.jar
