@@ -18,7 +18,7 @@ WORKDIR /code
 RUN git clone https://arupkumarm123:Shohini010@github.com/arupkumarm123/SmartCampaign.git
 RUN pwd
 RUN ls
-RUN cd campaign-service
+RUN cd SmartCampaign/campaign-service
 RUN [ "mvn", "install" ]
 ADD target/campaign-service-1.0-SNAPSHOT.jar /data/campaign-service.jar
 
