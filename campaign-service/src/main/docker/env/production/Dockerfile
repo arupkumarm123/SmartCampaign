@@ -13,13 +13,12 @@ RUN touch /root/.ssh/known_hosts
 RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
 
 WORKDIR /code
-#RUN git clone git@github.com:arupkumarm123/SmartCampaign.git
 RUN git clone https://arupkumarm123:Shohini010@github.com/arupkumarm123/SmartCampaign.git
 RUN cd SmartCampaign/campaign-service
 WORKDIR /code/SmartCampaign/campaign-service
 RUN [ "mvn", "install" ]
 WORKDIR /code/SmartCampaign/campaign-service/target
-RUN ls 
+RUN cd target
 ADD campaign-service-1.0-SNAPSHOT.jar /data/campaign-service.jar
 
 CMD java -jar campaign-service.jar
