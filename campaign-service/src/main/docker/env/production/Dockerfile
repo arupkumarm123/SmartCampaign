@@ -18,8 +18,8 @@ RUN git clone https://arupkumarm123:Shohini010@github.com/arupkumarm123/SmartCam
 RUN cd SmartCampaign/campaign-service
 WORKDIR /code/SmartCampaign/campaign-service
 RUN [ "mvn", "install" ]
-WORKDIR /code/SmartCampaign/campaign-service
-RUN ls target/
-ADD target/campaign-service-1.0-SNAPSHOT.jar /data/campaign-service.jar
+WORKDIR /code/SmartCampaign/campaign-service/target
+RUN ls 
+ADD campaign-service-1.0-SNAPSHOT.jar /data/campaign-service.jar
 
 CMD java -jar campaign-service.jar
