@@ -1,6 +1,5 @@
 package org.akm.model;
 
-import org.akm.App.Sender;
 import org.akm.exception.UserExistsException;
 import org.akm.repository.CampaignRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +24,6 @@ public class CampaignController {
 	@Autowired
 	private CampaignRepository repository;
 	
-	@Autowired
-	private Sender sender;
 	
 	
 	@RequestMapping(method=RequestMethod.POST, headers="Accept=application/json")
@@ -38,7 +35,6 @@ public class CampaignController {
 		}
 		
 		repository.save(campaign);
-		sender.send(campaign);
 		return savedCampaign;
 	}
 }
