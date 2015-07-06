@@ -1,3 +1,8 @@
 # SmartCampaign
 Campaign Service 
-After demo
+
+Contains the campaign service 
+
+campaign service configuration 
+
+campaign service test module
