@@ -2,7 +2,8 @@
  MAINTAINER shohinee585@gmail.com
  EXPOSE 8080
  
- WORKDIR .
+ WORKDIR /data/jenkins/slaves/cd/workspace/smartcampaign/campaign-service-test/
+
  ADD target/campaign-service-test.jar /data/campaign-service-test.jar
 CMD java -jar /data/campaign-service.jar
 
