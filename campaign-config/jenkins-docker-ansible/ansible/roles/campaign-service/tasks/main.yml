@@ -1,0 +1,25 @@
+- name: Directory is present
+  file:
+    path=/data/SmartCampaign/db
+    state=directory
+  tags: [SmartCampaign]
+
+- name: Latest container is pulled
+  shell: sudo docker pull arupkumarm/smartcampaign
+  tags: [SmartCampaign]
+
+- name: Container is absent
+  docker:
+    image=arupkumarm/smartcampaign
+    name=smartcampaign
+    state=absent
+  tags: [SmartCampaign]
+
+- name: Container is running
+  docker:
+    name=smartcampaign
+    image=arupkumarm/smartcampaign
+    ports=9001:8080
+    volumes=/data/SmartCampaign/db:/data/db
+    state=running
+  tags: [SmartCampaign]
