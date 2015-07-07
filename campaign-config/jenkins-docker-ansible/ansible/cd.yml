@@ -6,3 +6,8 @@
     - docker
     - registry
     - jenkins
+  vars:
+    - docker_hub_user: arupkumarm
+    - docker_hub_password: Shohini010
+    - docker_hub_email: arupkumarm@yahoo.com
+

@@ -41,14 +41,16 @@
       <command>
 mvn clean install
 cd campaign-service-test
-sudo docker build -t 192.168.50.91:5000/{{ item }}-tests target
-sudo docker push arupkumarm/{{ item }}-tests
+sudo docker build -t {{ docker_hub_user}}/{{ item }}-tests target
+
+sudo docker login -u {{ docker_hub_user }} -p {{ docker_hub_password }} -e {{ docker_hub_email }}
+sudo docker push {{ docker_hub_user }}/{{ item }}-tests
 sudo docker run -t --rm \
   -v $PWD:/source \
   -v /data/.ivy2:/root/.ivy2/cache \
-  arupkumarm/{{ item }}-tests
-sudo docker build -t 192.168.50.91:5000/{{ item }} .
-sudo docker push arupkumarm/{{ item }}</command>
+  {{ docker_hub_user }}/{{ item }}-tests
+  sudo docker build -t {{ docker_hub_user }}/{{ item }} .
+sudo docker push {{ docker_hub_user }}/{{ item }}</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
