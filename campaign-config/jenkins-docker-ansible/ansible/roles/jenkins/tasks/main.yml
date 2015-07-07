@@ -27,6 +27,7 @@
   with_items: jobs
   tags: [jenkins]
 
+
 - name: Build jobs are present
   template:
     src=build.xml.j2
@@ -56,6 +57,14 @@
     image=vfarcic/jenkins
     ports=8080:8080
     volumes=/data/jenkins:/jenkins
+  tags: [jenkins]
+
+- name:  Sonar Config is present
+  template:
+    src=hudson.plugins.sonar.SonarPublisher.xml.j2
+    dest='{{ jenkins_directory }}/hudson.plugins.sonar.SonarPublisher.xml'
+    backup=yes
+  with_items: jobs
   tags: [jenkins]
 
 - name: Reload

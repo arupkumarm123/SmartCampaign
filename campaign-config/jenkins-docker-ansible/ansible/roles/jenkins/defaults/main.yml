@@ -16,6 +16,7 @@ plugins:
   - matrix-project.jpi
   - git-client.hpi
   - github-api.hpi
+  - sonar.hpi
 
 jobs:
   - smartcampaign

@@ -1,6 +1,6 @@
 ---
 - hosts: localhost
-  remote_user: root
+  remote_user: vagrant
 
   vars:
     # Use default log file size so Travis CI VM allows MySQL restart.
@@ -16,4 +16,4 @@
   roles:
     - geerlingguy.java
     - geerlingguy.mysql
-    - ansible-role-sonar
+    - sonar

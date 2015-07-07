@@ -5,3 +5,4 @@ apt-get install -y software-properties-common
 apt-add-repository ppa:ansible/ansible
 apt-get update
 apt-get install -y ansible
+ansible-galaxy install --force geerlingguy.java geerlingguy.mysql

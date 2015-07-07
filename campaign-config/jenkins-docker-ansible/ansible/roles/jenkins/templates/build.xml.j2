@@ -1,18 +1,17 @@
-<?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
   <description></description>
   <keepDependencies>false</keepDependencies>
   <properties>
     <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.10">
-	    <projectUrl>https://github.com/arupkumarm123/{{ item }}/</projectUrl>
+	    <projectUrl>https://github.com/{{ git_hub_user }}/{{ item }}/</projectUrl>
     </com.coravy.hudson.plugins.github.GithubProjectProperty>
   </properties>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@2.3.4">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-      <url>https://github.com/arupkumarm123/{{ item }}</url>
+      <url>https://github.com/{{ git_hub_user }}/{{ item }}</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
