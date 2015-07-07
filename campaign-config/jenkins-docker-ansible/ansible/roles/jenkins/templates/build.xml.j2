@@ -41,9 +41,7 @@
       <command>
 mvn clean install
 cd campaign-service-test
-pwd
-ls
-sudo docker build -t 192.168.50.91:5000/{{ item }}-tests src/main/docker/tests/
+sudo docker build -t 192.168.50.91:5000/{{ item }}-tests target
 sudo docker push arupkumarm/{{ item }}-tests
 sudo docker run -t --rm \
   -v $PWD:/source \
