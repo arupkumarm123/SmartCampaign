@@ -5,6 +5,7 @@
     - java
     - docker
     - registry
+    - sonar
     - jenkins
   vars:
     - docker_hub_user: arupkumarm
