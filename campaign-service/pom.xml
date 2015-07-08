@@ -116,7 +116,12 @@
 
   <profiles>
       <profile>
-          <id>intr</id>
+         <id>intr</id>
+	 <properties>
+             <sonar.jdbc.url>jdbc:mysql://localhost:3306/sonar</sonar.jdbc.url>
+	     <sonar.host.url>http://localhost:9000</sonar.host.url>
+
+         </properties>
          <build>
            <plugins>
              <plugin>
