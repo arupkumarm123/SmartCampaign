@@ -118,9 +118,10 @@
       <profile>
          <id>intr</id>
 	 <properties>
-             <sonar.jdbc.url>jdbc:mysql://localhost:3306/sonar</sonar.jdbc.url>
+             <sonar.jdbc.url>jdbc:mysql://localhost:3306/sonar?useUnicode=true&amp;characterEncoding=utf8</sonar.jdbc.url>
 	     <sonar.host.url>http://localhost:9000</sonar.host.url>
-
+             <sonar.jdbc.username>sonar</sonar.jdbc.username>
+             <sonar.jdbc.password>sonar</sonar.jdbc.password>
          </properties>
          <build>
            <plugins>
