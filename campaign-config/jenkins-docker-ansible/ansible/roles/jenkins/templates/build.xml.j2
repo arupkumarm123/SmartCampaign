@@ -38,8 +38,7 @@
   <builders>
     <hudson.tasks.Shell>
       <command>
-mvn clean install -Pintr -DskipTests
-mvn sonar:sonar
+mvn clean install -Pintr 
 cd campaign-service-test
 sudo docker build -t {{ docker_hub_user}}/{{ item }}-tests target
 
