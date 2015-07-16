@@ -1,0 +1,56 @@
+[{
+
+    "campaign_id": "1",
+
+    "campaign_name": "JbongOnline",
+
+    "campaign_desc": "50% off sale on premium brand",
+
+    "start_date": "12-Dec-2015",
+
+    "end_date": "12-Dec-2015",
+
+    "campaign_description": "Big launch of premium brands on Jabong"
+
+    "country": "India"
+
+    "region": "Bangalore"
+}, 
+{
+
+    "campaign_id": "2",
+
+    "campaign_name": "JabongKids",
+
+    "campaign_desc": "50% off sale on Jabong kids ware brand",
+
+    "start_date": "12-Dec-2015",
+
+    "end_date": "14-Dec-2015",
+
+    "campaign_description": "Big discount on premium brands kids brand"
+
+    "country": "India"
+
+    "region": "Bangalore"
+} ,
+{
+
+    "campaign_id": "3",
+
+    "campaign_name": "JabongHouseHold",
+
+    "campaign_desc": "50% off sale on Kitchen  brand",
+
+    "start_date": "12-Sep-2015",
+
+    "end_date": "19-Sep-2015",
+
+    "campaign_description": "All kitchen items "
+
+    "country": "India"
+
+    "region": "Kolkata"
+} 
+
+]
