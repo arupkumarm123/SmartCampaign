@@ -2,6 +2,7 @@ package org.akm.model;
 
 import java.util.Optional;
 import java.util.concurrent.Future;
+import java.util.stream.Stream;
 
 import org.akm.exception.UserExistsException;
 import org.akm.repository.CampaignRepository;
@@ -38,21 +39,8 @@ public class CampaignController {
 	public DeferredResult<Campaign> create(@RequestBody Campaign campaign) {
 		
 		final DeferredResult<Campaign> result = new DeferredResult<Campaign>();
-		final Future<Optional<Campaign>> savedCampaignFuture = repository.findByName(campaign.getName());
-		final ListenableFuture<Optional<Campaign>> campaignFuture = JdkFutureAdapters.listenInPoolThread(savedCampaignFuture);
-		
-		Futures.addCallback(campaignFuture, new FutureCallback<Optional<Campaign>>() {
-
-			@Override
-			public void onFailure(final Throwable error) {
-				result.setErrorResult(error);
-			}
-
-			@Override
-			public void onSuccess(final Optional<Campaign> camp) {
-				camp.ifPresent((c)->result.setResult(c));
-			}
-		});
+		final Stream<Campaign> campaigns = repository.findByName(campaign.getName());
+		campaigns.map(x->result.setResult(x)).findFirst();
 		return result;
 	}
 }
