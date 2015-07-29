@@ -5,39 +5,105 @@
   <title>SmartCampaign</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="styles/bootstrap.css">
   <link rel="stylesheet" href="styles/main.css">
-  <link rel="stylesheet" href="styles/bootstrap.min.css">
   <link rel="stylesheet" href="styles/bootstrap-responsive.min.css">
   <link rel="stylesheet" href="styles/bootstrap-theme.min.css">
   <link rel="stylesheet" href="styles/ng-grid.min.css">
 </head>
 <body ng-app="campaignApp">
 
-<div class="navbar navbar-inverse">
-  <a class="navbar-brand" href="#">SmartCampaign</a>
-</div>
-<div class="panel panel-default row">
-  <div class="col-xs-3">
-    left side panel
+
+<nav class="navbar navbar-inverse navbar-static-top nav-tabs" role="navigation" style="margin:0px">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-toggle="collapse" data-target="#cmp-NavBar-collapse-1">
+      <span class="sr-only">Toggle Navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Home</a>
+    </div>
+    <div class="collapse navbar-collapse navbar-right" ui-view=""  id="cmp-NavBar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a ui-sref="/dashboard">Dashboard</a></li>
+        <li><a href="/dashboard.targeting">Targeting</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">User<b class="caret"></b></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+            <li><a ui-sref="/login">Login</a></li>
+            <li><a href="/logout">UserProfile</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
   </div>
-  <div class="col-xs-8">
-    <div ng-view></div>
+</nav>
+
+  <div class="container-fluid">
+    <div class="container">
+      <div class="jumbotron">
+        <img src="images/images.jpeg" class="img-responsive"/>
+      </div>
+    </div>
+
+    <!--div class="row"-->
+      <div class="col-xs-2 nomargin nopadding" ui-view="leftmenus">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <ul>
+              <li><a href="/campaign">Campaign</a></li>
+              <li><a href="#">Targeting</a></li>
+              <li><a href="#">Admin</a></li>
+              <li><a href="#">Tag</a></li>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+
+        </ul>
+      </div>
+
+      <div class="col-xs-10" ng-view>middle panel</div>
+      <div class="col-xs-10" ui-view="dashboard.view"></div>
+      <div class="col-xs-10" ui-view="login.view"></div>
+
+    <!--/div-->
   </div>
+<div class="container">
 
 
-</div>
+<!-- start of the footer-->
 
-<script>
-  !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-      (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-    r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-  }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row">
+        <p>This is my footer</p>
+      </div>
+      <div class="bottom-left">
+        CopyRight 1996
+      </div>
+      <div class="bottom-right">
 
-  ga('create', 'UA-XXXXX-X');
-  ga('send', 'pageview');
-</script>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html">UserAgreement</a></li>
+          <li><a href="index.html">ContactUs</a></li>
+        </ul>
+      </div>
 
-<script src="scripts/vendor/jquery.min.js"></script>
+    </div>
+  </footer>
+
+
+
+<!-- endof the footer-->
+
+<script src="scripts/vendor/jQuery.js"></script>
 <script src="scripts/vendor/angular.js"></script>
 <script src="scripts/vendor/bootstrap.js"></script>
 <script src="scripts/vendor/angular-animate.js"></script>
@@ -47,12 +113,10 @@
 <script src="scripts/vendor/angular-sanitize.js"></script>
 <script src="scripts/vendor/angular-touch.js"></script>
 <script src="scripts/services/services.js"></script>
-<script src="scripts/services/ng-websocket.js"></script>
 <script src="scripts/directives/directives.js"></script>
-<!--script src="scripts/controllers/controllers.js"></script-->
 <script src="scripts/vendor/ng-grid-2.0.14.min.js"></script>
+<script src="scripts/vendor/angular-ui-router.js"></script>
 <script src="scripts/app.js"></script>
-
 
 </body>
 </html>
