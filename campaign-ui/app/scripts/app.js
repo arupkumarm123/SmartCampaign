@@ -11,10 +11,10 @@ var app = angular
     'ngGrid',
     //'campaign',
     'campaign.services',
-    'campaign.directives',
-    'ngWebsocket'
+    'ui.router',
+    'campaign.directives'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($stateProvider,$routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/list.html',
@@ -24,15 +24,44 @@ var app = angular
             return CampaignService.getCampaigns();
           }]
         }
+      }).when('#/campaign' , {
+        templateUrl: 'views/List.html',
+        controller: 'ListController',
+        resolve: {
+          campaigns: ['CampaignService' , function(CampaignService) {
+            return CampaignService.getCampaigns();
+          }]
+        }
       });
-      //.when('/about', {
-      //  templateUrl: 'views/about.html',
-      //  co:1ntroller: 'AboutCtrl'
-      //})
-      //.otherwise({
-      //  redirectTo: '/'
-      //});
+    $stateProvider.state('/' ,{
+      url:"/dashboard",
+      views : {
+        "dashboard.view"  : {
+          template:'<div class="col-xs-10" ng-view>middle panel</div>'
+        }
+      }
+    }).state('login', {
+        url:"/login",
+        views : {
+          "login.view" : {
+           templateUrl: 'views/login.html'
+          }
+        },
+      // You can pair a controller to your template. There *must* be a template to pair with.
+      controller: ['$scope', 'utils',
+        function (  $scope,  utils) {
+          var password = $scope.credentials.password;
+
+          $scope.login = function () {
+            console.log(password);
+            $state.go('dasboard');
+          };
+        }]
+
+      })
+
   });
+
 
 app.controller('ListController', ['$scope', 'CampaignService','campaigns',
   function($scope, CampaignService ,  campaigns) {
@@ -43,7 +72,8 @@ app.controller('ListController', ['$scope', 'CampaignService','campaigns',
           'First_Name': evt.targetScope.row.entity.First_Name,
           'Last_Name': evt.targetScope.row.entity.Last_Name,
         };
-      CampaignService.updateCampaign(evt.targetScope.row.entity.id, evt.targetScope.row.entity).then(function(data){
+      CampaignService.updateCampaign(evt.targetScope.row.entity.id,
+        evt.targetScope.row.entity).then(function(data){
           getCampaigns();
         });
     });
