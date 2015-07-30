@@ -102,3 +102,57 @@ body {
   padding-right: 30px;
 
 }
+
+.dashboard {
+
+  height: 800px;
+}
+
+/** this is the sign in form */
+
+.form-signin {
+  max-width: 250px;
+  padding: 15px;
+  margin: 0 auto;
+  background-color: #00b3ee;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 12px;
+  margin-bottom:5px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.form-signin .accountM {
+
+   margin-top:20px;
+
+}
+.form-signin .href {
+  font-weight: normal;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+/** end of the sign in form */
